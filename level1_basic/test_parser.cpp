@@ -31,7 +31,15 @@ TEST(ConfigParserTest, ParseEmptyLineReturnsNull) {
 // Scrivi un test che verifichi almeno 3 casi validi
 // (es. stringhe con spazi, caratteri speciali). Usa EXPECT_EQ confrontando con true/false.
 TEST(KeyValidationTest, ValidatesKeyCharactersCorrectly) {
-    // IL TUO CODICE QUI
+    // IL TUO CODICE QUI    
+    EXPECT_EQ(IsValidKeyName("host"), true);
+    EXPECT_EQ(IsValidKeyName("LOCALhost"), true);
+    EXPECT_EQ(IsValidKeyName("username123"), true);
+
+    EXPECT_EQ(IsValidKeyName("user name"), false); // Spazio non valido
+    EXPECT_EQ(IsValidKeyName("user-name"), false); // Trattino non valido
+    EXPECT_EQ(IsValidKeyName("user@name"), false); // Chiocciola non valida
+
 }
 
 // TODO STUDENTE 4: La funzione IsValidKeyName accetta solo lettere e numeri.

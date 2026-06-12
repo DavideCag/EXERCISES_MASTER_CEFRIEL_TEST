@@ -21,6 +21,7 @@ TEST(ConfigParserTest, ParseLineWithoutEqualsSignReturnsNull) {
     // IL TUO CODICE QUI
     ConfigPair* pair = ParseConfigLine("host localhost");
     EXPECT_EQ(pair, nullptr) << "La linea deve restituire null";
+    delete pair;
 }
 
 // TODO STUDENTE 2: Testa il parsing di una linea vuota "".

@@ -16,7 +16,14 @@ TEST(ShoppingCartTest, StartsEmptyAndAddsSuccessfully) {
 // Usa EXPECT_EQ per verificare il conteggio totale e il prezzo totale.
 // Usa messaggi personalizzati << se l'asserzione fallisce.
 TEST(ShoppingCartTest, CalculatesTotalForMultipleItems) {
-    // IL TUO CODICE QUI
+    ShoppingCart cart;
+
+    cart.AddItem("Banana", 100); // 1.00 euro
+    cart.AddItem("Arancia", 200); // 2.00 euro
+    cart.AddItem("Pera", 250); // 2.50 euro
+
+    EXPECT_EQ(cart.GetItemCount(), 3) << "Il conteggio degli articoli dovrebbe essere 3 dopo aver aggiunto tre prodotti";
+    EXPECT_EQ(cart.GetTotalCents(), 550) << "Il totale dovrebbe essere 550 centesimi dopo aver aggiunto tre prodotti";
 }
 
 // TODO STUDENTE 2: Testa l'estrazione di un prodotto esistente.

@@ -47,6 +47,8 @@ TEST(KeyValidationTest, ValidatesKeyCharactersCorrectly) {
 // Scrivi un test che verifichi almeno 3 casi non validi 
 // (es. stringhe con spazi, caratteri speciali). Usa EXPECT_EQ confrontando con true/false.
 TEST(ConfigParserTest, ValidatesWrongCharactersNegation) {
-    // IL TUO CODICE QUI
+    ASSERT_EQ(IsValidKeyName("1/e2="), false);
+    ASSERT_EQ(IsValidKeyName("????"), false);
+    ASSERT_NE("ciao!!",true);
 }
 

@@ -19,6 +19,7 @@ TEST(ConfigParserTest, ParseValidLine) {
 // Assicurati che restituisca nullptr. Aggiungi un messaggio personalizzato in caso di fallimento.
 TEST(ConfigParserTest, ParseLineWithoutEqualsSignReturnsNull) {
     // IL TUO CODICE QUI
+    //prova di push
 }
 
 // TODO STUDENTE 2: Testa il parsing di una linea vuota "".

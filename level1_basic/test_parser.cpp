@@ -28,8 +28,16 @@ TEST(ConfigParserTest, ParseEmptyLineReturnsNull) {
 }
 
 // TODO STUDENTE 3: La funzione IsValidKeyName accetta solo lettere e numeri.
-// Scrivi un test che verifichi almeno 3 casi validi e 3 casi non validi 
+// Scrivi un test che verifichi almeno 3 casi validi
 // (es. stringhe con spazi, caratteri speciali). Usa EXPECT_EQ confrontando con true/false.
 TEST(KeyValidationTest, ValidatesKeyCharactersCorrectly) {
     // IL TUO CODICE QUI
 }
+
+// TODO STUDENTE 4: La funzione IsValidKeyName accetta solo lettere e numeri.
+// Scrivi un test che verifichi almeno 3 casi non validi 
+// (es. stringhe con spazi, caratteri speciali). Usa EXPECT_EQ confrontando con true/false.
+TEST(ConfigParserTest, ValidatesWrongCharactersNegation) {
+    // IL TUO CODICE QUI
+}
+

@@ -50,6 +50,6 @@ TEST(KeyValidationTest, ValidatesKeyCharactersCorrectly) {
 TEST(ConfigParserTest, ValidatesWrongCharactersNegation) {
     ASSERT_EQ(IsValidKeyName("1/e2="), false);
     ASSERT_EQ(IsValidKeyName("????"), false);
-    ASSERT_NE("ciao!!",true) << "The key is expected to be not valid";
+    ASSERT_NE(IsValidKeyName("ciao!!"), true) << "The key is expected to be not valid";
 }
 

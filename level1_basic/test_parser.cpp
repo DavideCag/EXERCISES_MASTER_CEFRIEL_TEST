@@ -19,7 +19,8 @@ TEST(ConfigParserTest, ParseValidLine) {
 // Assicurati che restituisca nullptr. Aggiungi un messaggio personalizzato in caso di fallimento.
 TEST(ConfigParserTest, ParseLineWithoutEqualsSignReturnsNull) {
     // IL TUO CODICE QUI
-    //prova 3
+    ConfigPair* pair = ParseConfigLine("host localhost");
+    EXPECT_EQ(pair, nullptr) << "La linea deve restituire null";
 }
 
 // TODO STUDENTE 2: Testa il parsing di una linea vuota "".

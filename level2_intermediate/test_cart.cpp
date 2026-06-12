@@ -26,6 +26,19 @@ TEST(ShoppingCartTest, CalculatesTotalForMultipleItems) {
 // Ricordati di fare delete del puntatore estratto!
 TEST(ShoppingCartTest, ExtractsExistingItemCorrectly) {
     // IL TUO CODICE QUI
+    ShoppingCart cart;
+    cart.AddItem("Banana", 100);
+    cart.AddItem("Arancia", 200);
+    EXPECT_EQ(cart.GetItemCount(), 2);
+    EXPECT_EQ(cart.GetTotalCents(), 300);
+    
+    Item* extracted = cart.ExtractItem("Banana");
+    ASSERT_NE(extracted, nullptr) << "ExtractItem should return a valid pointer for existing item";
+    EXPECT_EQ(extracted->name, "Banana");
+    EXPECT_EQ(extracted->price_cents, 100);
+    delete extracted; // Clean-up
+    EXPECT_EQ(cart.GetItemCount(), 1);
+    EXPECT_EQ(cart.GetTotalCents(), 200);
 }
 
 // TODO STUDENTE 3: Testa l'estrazione di un prodotto NON esistente.

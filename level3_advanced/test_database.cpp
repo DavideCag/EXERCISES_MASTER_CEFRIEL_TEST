@@ -8,8 +8,8 @@ protected:
 
     void SetUp() override {
         db.Connect();
-        db.InserUser("admin", 1, "Administrator");
-        db.InserUser("guest", 2, "Guest");    
+        db.InsertUser("admin", 1, "Administrator");
+        db.InsertUser("guest", 2, "Guest");    
     }
 
     void TearDown() override {

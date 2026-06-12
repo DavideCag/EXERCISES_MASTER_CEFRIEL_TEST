@@ -52,4 +52,13 @@ TEST(ShoppingCartTest, ExtractsExistingItemCorrectly) {
 // Verifica che ExtractItem restituisca nullptr.
 TEST(ShoppingCartTest, ExtractNonExistingItemReturnsNull) {
     // IL TUO CODICE QUI
+
+    ShoppingCart cart;
+
+    cart.AddItem("Gelato", 160);
+    cart.AddItem("Fumetto", 130);
+
+    Item* item = cart.ExtractItem("Pizza");
+
+    EXPECT_EQ(item, nullptr);
 }

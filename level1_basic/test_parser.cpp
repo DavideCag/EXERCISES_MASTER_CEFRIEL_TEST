@@ -26,7 +26,12 @@ TEST(ConfigParserTest, ParseLineWithoutEqualsSignReturnsNull) {
 
 // TODO STUDENTE 2: Testa il parsing di una linea vuota "".
 TEST(ConfigParserTest, ParseEmptyLineReturnsNull) {
-    // IL TUO CODICE QUI
+    ConfigPair* pair = ParseConfigLine("");
+
+    //EXPECT_EQ per non interrompere subito in caso di errore
+    EXPECT_EQ(pair, nullptr) << "Il parsing di una linea vuota deve restituire null";
+
+    delete pair; // Clean-up   
 }
 
 // TODO STUDENTE 3: La funzione IsValidKeyName accetta solo lettere e numeri.

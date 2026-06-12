@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "config_parser.h"
 
+
 // ESEMPIO PROFESSORE:
 TEST(ConfigParserTest, ParseValidLine) {
     ConfigPair* pair = ParseConfigLine("host=localhost");
@@ -34,10 +35,23 @@ TEST(ConfigParserTest, ParseEmptyLineReturnsNull) {
     delete pair; // Clean-up   
 }
 
+class KeyValidationTest : public testing::Test{
+    protected:
+        KeyGenerator* keyGenerator;
+
+    void SetUp() override{
+        this->keyGenerator = new KeyGenerator(42);
+    }
+
+    void TearDown() override{
+        delete this->keyGenerator;
+    }
+};
+
 // TODO STUDENTE 3: La funzione IsValidKeyName accetta solo lettere e numeri.
 // Scrivi un test che verifichi almeno 3 casi validi
 // (es. stringhe con spazi, caratteri speciali). Usa EXPECT_EQ confrontando con true/false.
-TEST(KeyValidationTest, ValidatesKeyCharactersCorrectly) {
+TEST_F(KeyValidationTest, ValidatesKeyCharactersCorrectly) {
     // IL TUO CODICE QUI    
     EXPECT_EQ(IsValidKeyName("host"), true);
     EXPECT_EQ(IsValidKeyName("LOCALhost"), true);
@@ -46,15 +60,18 @@ TEST(KeyValidationTest, ValidatesKeyCharactersCorrectly) {
     EXPECT_EQ(IsValidKeyName("user name"), false); // Spazio non valido
     EXPECT_EQ(IsValidKeyName("user-name"), false); // Trattino non valido
     EXPECT_EQ(IsValidKeyName("user@name"), false); // Chiocciola non valida
-
 }
 
 // TODO STUDENTE 4: La funzione IsValidKeyName accetta solo lettere e numeri.
 // Scrivi un test che verifichi almeno 3 casi non validi 
 // (es. stringhe con spazi, caratteri speciali). Usa EXPECT_EQ confrontando con true/false.
-TEST(ConfigParserTest, ValidatesWrongCharactersNegation) {
-    ASSERT_EQ(IsValidKeyName("1/e2="), false);
-    ASSERT_EQ(IsValidKeyName("????"), false);
-    ASSERT_NE(IsValidKeyName("ciao!!"), true) << "The key is expected to be not valid";
+TEST_F(KeyValidationTest, ValidatesRandomKeys) {
+    ASSERT_EQ(IsValidKeyName(this->keyGenerator->GenerateValidKey()), true);
+    ASSERT_EQ(IsValidKeyName(this->keyGenerator->GenerateValidKey()), true);
+    ASSERT_NE(IsValidKeyName(this->keyGenerator->GenerateValidKey()), false) << "The key is expected to be valid";
+
+    ASSERT_EQ(IsValidKeyName(this->keyGenerator->GenerateNotValidKey()), false);
+    ASSERT_EQ(IsValidKeyName(this->keyGenerator->GenerateNotValidKey()), false);
+    ASSERT_NE(IsValidKeyName(this->keyGenerator->GenerateNotValidKey()), true) << "The key is expected to be not valid";
 }
 
